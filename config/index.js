@@ -18,7 +18,15 @@ module.exports = {
         pathRewrite: {
             '^/api': ''   //需要rewrite重写的,
         }              
-    }
+      },
+      '/account': {
+        // 测试环境
+        target: 'https://account.c3w.cc',  // 接口域名
+        changeOrigin: true,  //是否跨域
+        pathRewrite: {
+            '^/account': ''   //需要rewrite重写的,
+        }              
+      }
     },
 
     // Various Dev Server settings
