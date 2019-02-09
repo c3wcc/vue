@@ -4,7 +4,7 @@
 
     <wv-button @click="aaa()" type="primary" :mini="true">跳转aaa</wv-button>
 
-    <wv-button @click="ddd()" type="primary" :mini="true">跳转ddd</wv-button>
+    <wv-button @click="login()" type="primary" :mini="true">去登录</wv-button>
   </div>
 </template>
 
@@ -19,13 +19,10 @@ export default {
   methods: {
     aaa() {
       console.log("44444");
-      this.$router.push({
-        path: "/aaa"
-      });
+     
       var obj = {
         pageSize: 20
       };
-
       // this.$http.get({url: '/api/ershou/my/delete_post' , params: obj })
       // .then((res) => {
       //   // 请求成功回调
@@ -33,21 +30,25 @@ export default {
       // }, () => {
       //   // 请求失败回调
       // });
-
+      this.$ajax.get('/api/ershou/my/delete_post',{
+            params: obj
+        })
+       .then((res) => {
+         // 请求成功回调
+           console.log(res)
+           console.log(res.data)
+           if(res.data.status == -1){
+             alert(res.data.msg)
+           }
+       }, () => {
+         // 请求失败回调
+       });
       console.log("44444");
     },
-    ddd() {
-      console.log("ddddddddd");
-      // this.$router.push({
-      //   path:'/ddd'
-      // })
-      var obj = {
-        pageSize: 20
-      };
-
-      
-
-      console.log("请求");
+    login() {
+     this.$router.push({
+        path: "/user/login"
+      });
     }
   }
 };
