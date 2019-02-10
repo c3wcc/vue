@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index/index'
 import login from '@/components/user/login'
+import userindex from '@/components/user/index'
 import aaa from '@/components/aaa'
 import ddd from '@/components/ddd'
 
@@ -36,6 +37,14 @@ export default new Router({
       component: login,
       meta: {
         title: "登录"
+      }
+    },
+    {
+      path: '/user/index',
+      name: 'userindex',
+      component: userindex,
+      meta: {
+        title: "用户中心"
       }
     }
 
